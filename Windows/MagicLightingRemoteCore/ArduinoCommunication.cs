@@ -101,6 +101,10 @@ namespace MagicLightingRemoteCore
                             _portName = portName;
                             return true;
                         }
+                        else
+                        {
+                            readRetryCount--;
+                        }
                     }
                     catch
                     {
