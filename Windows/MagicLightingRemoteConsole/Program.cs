@@ -66,7 +66,7 @@ namespace MagicLightingRemoteConsole
         private static void ShowVersionInfo()
         {
             // Show Assembly version
-            Console.WriteLine("1.0.0.0");
+            Console.WriteLine("1.0.0");
         }
 
         private static void Exit(int exitCode)
