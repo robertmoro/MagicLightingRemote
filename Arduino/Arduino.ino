@@ -10,34 +10,36 @@
  * - If exists, remove the folder 'RobotIRremote' from C:\Program Files\Arduino\libraries\ (on 64-bit system: C:\Program Files (x86)\Arduino\libraries\)
  * - Connect an IR LED to Arduino pin D3 and GND using a 100 ohm resistor.
  */
- 
+
 #include <IRremote.h>
 
 #include "SerialCommunication.h"
 #include "MagicRemoteIrCommunication.h"
 
-SerialCommunication serialCommunication;
-MagicRemoteIrCommunication magicRemoteIrCommunication;
+SerialCommunication* serialCommunication;
+MagicRemoteIrCommunication* magicRemoteIrCommunication;
 
 void setup()
 {
+  serialCommunication = new SerialCommunication();
+  magicRemoteIrCommunication = new MagicRemoteIrCommunication();
 }
 
 void loop()
 {
-  while(serialCommunication.byteAvailable())
+  while(serialCommunication->byteAvailable())
   {
-    serialCommunication.shiftByteReadIntoReceiveBuffer();
+    serialCommunication->shiftByteReadIntoReceiveBuffer();
 
-    if(serialCommunication.completeCommandReceived())
+    if(serialCommunication->completeCommandReceived())
     {
-      serialCommunication.sendAcknowledge();
-      byte colorCode = serialCommunication.getColorCodeFromCommand();
-      magicRemoteIrCommunication.sendColorCode(colorCode);
+      serialCommunication->sendAcknowledge();
+      byte colorCode = serialCommunication->getColorCodeFromCommand();
+      magicRemoteIrCommunication->sendColorCode(colorCode);
     }
   }
 
-  magicRemoteIrCommunication.resendColorCode(3000);
+  magicRemoteIrCommunication->resendColorCode(3000);
 
   delay(100);  // Sleep 100 millis
 }
