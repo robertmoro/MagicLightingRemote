@@ -1,6 +1,6 @@
 /*
  * Emulate a Magic Remote Control to programmatically send a color code
- * to a Magic Lightning RGB LED light
+ * to a Magic Lighting RGB LED light
  * Date October 27, 2014
  * Copyright 2014 Robert Moro
  * 
