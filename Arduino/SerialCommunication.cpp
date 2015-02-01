@@ -19,7 +19,7 @@ void SerialCommunication::shiftByteReadIntoReceiveBuffer()
   }
 
   // Read one byte in the read buffer
-  rxBuffer[0] = Serial.read();   
+  rxBuffer[0] = Serial.read();
 }
 
 // Return true if buffer contains a complete command
@@ -36,19 +36,19 @@ void SerialCommunication::sendAcknowledge()
 byte SerialCommunication::getColorCodeFromCommand()
 {
   rxBuffer[3] = 0;
-  swapColorCodeChars(rxBuffer);
+  swapColorCodeBytes(rxBuffer);
   return asciiHex2Byte(&rxBuffer[1]);
 }
 
-void SerialCommunication::swapColorCodeChars(char* buffer)
+void SerialCommunication::swapColorCodeBytes(byte* buffer)
 {
-  char c = buffer[1];
+  byte c = buffer[1];
   buffer[1] = buffer[2];
   buffer[2] = c;
 }
 
 // assumes uppercase A-F
-byte SerialCommunication::asciiHex2Byte(char* a)
+byte SerialCommunication::asciiHex2Byte(byte* a)
 {
   byte val = 0;
 
