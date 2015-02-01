@@ -88,7 +88,7 @@ namespace MagicLightingRemoteCore
                 {
                     serial = CreateSerialPort(portName);
 
-                    char[] command = FormatCommand(colorCode);
+                    byte[] command = FormatCommand(colorCode);
                     serial.Write(command, 0, command.Length);
 
                     try
@@ -138,10 +138,9 @@ namespace MagicLightingRemoteCore
             return serial;
         }
 
-        private static char[] FormatCommand(byte colorCode)
+        private static byte[] FormatCommand(byte colorCode)
         {
-            string command = string.Format("${0}{1}", colorCode.ToString("X2"), (char)Enquiry);
-            return command.ToArray();
+            return new [] { (byte)'$', (byte)colorCode.ToString("X2")[0], (byte)colorCode.ToString("X2")[1], Enquiry };
         }
 
         #endregion Methods
