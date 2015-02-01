@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 
 namespace MagicLightingRemoteCore
@@ -90,7 +89,7 @@ namespace MagicLightingRemoteCore
             byte byteValue;
             // Try to parse value as a hexadecimal number
             if (value.Trim().ToLower().StartsWith("0x") &&
-                byte.TryParse(value.Trim().Substring(2), System.Globalization.NumberStyles.HexNumber, null, out byteValue))
+                byte.TryParse(value.Trim().Substring(2), NumberStyles.HexNumber, null, out byteValue))
             {
                 return TryParseAvailableColorCode(byteValue, out magicColor);
             }

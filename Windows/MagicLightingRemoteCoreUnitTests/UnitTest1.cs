@@ -151,7 +151,7 @@ namespace MagicLightingRemoteCoreUnitTests
         public void AssertThatMagicColorToStringContainsName()
         {
             var magicColorToString = MagicColors.Blue.ToString();
-            var expectedName = "Blue";
+            const string expectedName = "Blue";
 
             Assert.IsTrue(magicColorToString.Contains(expectedName));
         }
