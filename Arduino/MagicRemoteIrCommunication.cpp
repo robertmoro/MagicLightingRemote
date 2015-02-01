@@ -1,7 +1,3 @@
-#include <Arduino.h>
-#include <IRremote.h>
-#include <IRremoteInt.h>
-
 #include "MagicRemoteIrCommunication.h"
 
 MagicRemoteIrCommunication::MagicRemoteIrCommunication()
