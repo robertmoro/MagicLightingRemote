@@ -6,8 +6,8 @@
 class SerialCommunication
 {
 private:
-  const static byte enquiry = 5;
-  const static byte acknowledge = 6;
+  const static byte enquiry = '*';
+  const static byte acknowledge = '@';
   byte rxBuffer[4];
 
 public:

@@ -9,8 +9,9 @@ namespace MagicLightingRemoteCore
         #region Fields
 
         private static string _portName;
-        private const byte Enquiry = 5;
-        private const byte Acknowledge = 6;
+
+        private static readonly byte Enquiry = Convert.ToByte('*');
+        private static readonly byte Acknowledge = Convert.ToByte('@');
 
         #endregion Fields
 
